@@ -4,7 +4,7 @@
   "description": "Console app that fetch data from some weather and geolocation apis",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -22,5 +22,9 @@
   "bugs": {
     "url": "https://github.com/fsjorgeluis/console-weather/issues"
   },
-  "homepage": "https://github.com/fsjorgeluis/console-weather#readme"
+  "homepage": "https://github.com/fsjorgeluis/console-weather#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "inquirer": "^8.2.2"
+  }
 }
