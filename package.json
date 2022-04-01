@@ -2,9 +2,9 @@
   "name": "console-weather",
   "version": "0.0.1",
   "description": "Console app that fetch data from some weather and geolocation apis",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node src/index.js"
   },
   "repository": {
     "type": "git",
