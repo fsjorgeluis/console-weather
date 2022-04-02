@@ -24,10 +24,15 @@ class Searches {
                 params: this.mapBoxParams
             });
 
-            const response = await instance.get();
+            const { data } = await instance.get();
 
-            console.log(response.data);
-            return [];    
+            return data.features.map(city => ({
+                id: city.id,
+                place: city.place_name,
+                longitude: city.center[0],
+                latitude: city.center[1]
+            }))
+
         } catch (error) {
             return [];
         }

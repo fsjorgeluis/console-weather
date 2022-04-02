@@ -52,13 +52,13 @@ const readInput = async (message) => {
 	return description;
 };
 
-const removeMenu = async (tasks = []) => {
-	const choices = tasks.map((task, index) => {
-		const taskId = `${index + 1}.`.green;
+const checkPlaces = async (places = []) => {
+	const choices = places.map((place, index) => {
+		const placeId = `${index + 1}.`.green;
 
 		return {
-			value: task.id,
-			name: `${taskId} ${task.description}`,
+			value: place.id,
+			name: `${placeId} ${place.place}`,
 		};
 	});
 
@@ -69,7 +69,7 @@ const removeMenu = async (tasks = []) => {
 		{
 			type: 'list',
 			name: 'id',
-			message: 'Delete',
+			message: 'Select place',
 			choices,
 		},
 	];
@@ -93,14 +93,14 @@ const confirmInput = async (message) => {
 };
 
 
-const taskCheckList = async (tasks = []) => {
-	const choices = tasks.map((task, index) => {
-		const taskId = `${index + 1}.`.green;
+const placeCheckList = async (places = []) => {
+	const choices = places.map((place, index) => {
+		const placeId = `${index + 1}.`.green;
 
 		return {
-			value: task.id,
-			name: `${taskId} ${task.description}`,
-			checked: (task.completedAt) ? true : false
+			value: place.id,
+			name: `${placeId} ${place.description}`,
+			checked: (place.completedAt) ? true : false
 		}
 	});
 
@@ -121,7 +121,7 @@ module.exports = {
 	inquirerMenu,
 	pauseMenu,
 	readInput,
-	removeMenu,
+	checkPlaces,
 	confirmInput,
-	taskCheckList,
+	placeCheckList,
 };

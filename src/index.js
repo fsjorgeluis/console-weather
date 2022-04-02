@@ -1,7 +1,7 @@
 require('dotenv').config();
 require("colors");
 
-const { inquirerMenu, pauseMenu, readInput } = require("./libs/inquirer");
+const { inquirerMenu, pauseMenu, readInput, checkPlaces } = require("./libs/inquirer");
 const Searches = require("./services/Searches");
 
 
@@ -16,20 +16,21 @@ const main = async () => {
         switch (opt) {
             case 1:
                 // show message
-                const city = await readInput('City: ');
-                await searches.city(city);
-
+                const place = await readInput('City: ');
                 // search places
-
+                const cities = await searches.city(place);
                 // select city
-
+                const id = await checkPlaces(cities);
+                const selection = cities.find(c => c.id === id);
+                
+                
                 // get weather info
 
                 // show results
                 console.log('\nCity information\n'.green);
-                console.log('City:',);
-                console.log('Latitude:',);
-                console.log('Longitude:',);
+                console.log('City:', selection.place);
+                console.log('Latitude:', selection.longitude);
+                console.log('Longitude:', selection.latitude);
                 console.log('Temperature:',);
                 console.log('Min Temp:',);
                 console.log('Max Temp:',);
