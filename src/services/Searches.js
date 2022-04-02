@@ -10,7 +10,7 @@ class Searches {
 
     get mapBoxParams() {
         return {
-            'access_token': '',
+            'access_token': process.env.MAPBOX_KEY,
             'limit': 5,
             'language': 'en'
         }

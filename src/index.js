@@ -1,4 +1,5 @@
-require("colors")
+require('dotenv').config();
+require("colors");
 
 const { inquirerMenu, pauseMenu, readInput } = require("./libs/inquirer");
 const Searches = require("./services/Searches");
