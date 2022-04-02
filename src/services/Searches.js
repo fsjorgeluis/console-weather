@@ -1,4 +1,4 @@
-
+const axios = require('axios');
 
 class Searches {
 
@@ -8,12 +8,29 @@ class Searches {
         // TODO: read data from db
     }
 
-    async city(place = '') {
-        // TODO: fetch city api
-        console.log(place);
+    get mapBoxParams() {
+        return {
+            'access_token': '',
+            'limit': 5,
+            'language': 'en'
+        }
+    }
 
-        // return array of cities that matches place arg 
-        return [];
+    async city(place = '') {
+        
+        try {
+            const instance = axios.create({
+                baseURL: `https://api.mapbox.com/geocoding/v5/mapbox.places/${place}.json`,
+                params: this.mapBoxParams
+            });
+
+            const response = await instance.get();
+
+            console.log(response.data);
+            return [];    
+        } catch (error) {
+            return [];
+        }
     }
 }
 
