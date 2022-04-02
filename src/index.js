@@ -22,18 +22,21 @@ const main = async () => {
                 // select city
                 const id = await checkPlaces(cities);
                 const selection = cities.find(c => c.id === id);
-                
-                
                 // get weather info
+                const weather = await searches.weather(selection.longitude, selection.latitude)
 
                 // show results
+                console.clear();
                 console.log('\nCity information\n'.green);
-                console.log('City:', selection.place);
+                console.log('City:', selection.place.green);
                 console.log('Latitude:', selection.longitude);
                 console.log('Longitude:', selection.latitude);
-                console.log('Temperature:',);
-                console.log('Min Temp:',);
-                console.log('Max Temp:',);
+                console.log('Temperature:', weather.temp);
+                console.log('Min Temp:', weather.minTemp);
+                console.log('Max Temp:', weather.maxTemp);
+                console.log('Humidity:', weather.humidity);
+                console.log('Feels Like:', weather.feelsLike);
+                console.log('Weather description:', weather.description.green);
 
                 break;
     
