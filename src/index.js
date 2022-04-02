@@ -21,7 +21,11 @@ const main = async () => {
                 const cities = await searches.city(place);
                 // select city
                 const id = await checkPlaces(cities);
+                if (id === 0) continue;
+
                 const selection = cities.find(c => c.id === id);
+                // save to history
+                searches.createHistory(selection.place);
                 // get weather info
                 const weather = await searches.weather(selection.longitude, selection.latitude)
 
@@ -41,11 +45,15 @@ const main = async () => {
                 break;
     
             case 2:
-                console.log(searches.history);
+                searches.historyCapitalized.forEach((city, index) => {
+                    console.log(`${index + 1}.`.green, city)
+                })
+
                 break;
         
             case 0:
-                console.log(opt)
+                console.log('Good Bye!')
+
                 break;
             
         }
