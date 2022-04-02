@@ -27,14 +27,14 @@ const main = async () => {
                 // save to history
                 searches.createHistory(selection.place);
                 // get weather info
-                const weather = await searches.weather(selection.longitude, selection.latitude)
+                const weather = await searches.weather(selection.latitude, selection.longitude)
 
                 // show results
                 console.clear();
                 console.log('\nCity information\n'.green);
                 console.log('City:', selection.place.green);
-                console.log('Latitude:', selection.longitude);
-                console.log('Longitude:', selection.latitude);
+                console.log('Latitude:', selection.latitude);
+                console.log('Longitude:', selection.longitude);
                 console.log('Temperature:', weather.temp);
                 console.log('Min Temp:', weather.minTemp);
                 console.log('Max Temp:', weather.maxTemp);

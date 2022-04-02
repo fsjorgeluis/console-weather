@@ -13,7 +13,7 @@ class Searches {
     get historyCapitalized() {
         return this.history.map(place => {
             return place.replace(/(\b[a-z])/g, (firstChar) => firstChar.toLocaleUpperCase());
-        })
+        });
     }
 
     get mapBoxParams() {
@@ -45,8 +45,8 @@ class Searches {
                 id: city.id,
                 place: city.place_name,
                 longitude: city.center[0],
-                latitude: city.center[1]
-            }))
+                latitude: city.center[1],
+            }));
 
         } catch (error) {
             return [];
@@ -62,7 +62,7 @@ class Searches {
                    lat,
                    lon 
                 }
-            })
+            });
 
             const { data: { weather, main } } = await instance.get();
 
@@ -84,6 +84,8 @@ class Searches {
         if (this.history.includes(place.toLocaleLowerCase())) {
             return;
         }
+
+        this.history = this.history.splice(0, 5);
 
         this.history.unshift(place.toLocaleLowerCase());
 
