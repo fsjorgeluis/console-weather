@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/fsjorgeluis/console-weather#readme",
   "dependencies": {
+    "axios": "^0.26.1",
     "colors": "^1.4.0",
     "inquirer": "^8.2.2"
   }
